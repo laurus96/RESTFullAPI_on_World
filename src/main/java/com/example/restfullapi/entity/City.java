@@ -1,4 +1,4 @@
-package com.example.restfullapi.city;
+package com.example.restfullapi.entity;
 
 import lombok.*;
 import javax.persistence.*;
@@ -6,11 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "city")
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class City {
 
     @Id
@@ -20,10 +17,12 @@ public class City {
     @Column(name = "Name", columnDefinition = "char(35)")
     private String name;
 
-    //@ManyToOne
-    //@JoinColumn(name = "countryCode", foreignKey = @ForeignKey(name = "city_ibfk_1"))
-    @Column(name = "CountryCode")
-    private String countryCode;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CountryCode", nullable = false)
+    private Country country;
+
+    @Column(name = "CountryCode", insertable = false, updatable = false)
+    private String code;
 
     @Column(name = "District", columnDefinition = "char(20)")
     private String district;

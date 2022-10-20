@@ -1,5 +1,7 @@
-package com.example.restfullapi.country;
+package com.example.restfullapi.controller;
 
+import com.example.restfullapi.model.CountryBean;
+import com.example.restfullapi.service.CountryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,13 +22,13 @@ public class CountryController {
     }
 
     @GetMapping(path = "/countries")
-    public List<Country> getAllCountries(){
+    public List<CountryBean> getAllCountries(){
         log.info("Entering {} RestController method", "getAllCountries()");
         return countryService.getAllCountries();
     }
 
     @GetMapping(path = "/country/code={code}")
-    public ResponseEntity<Country> getCountryByCode(@PathVariable String code) {
+    public ResponseEntity<CountryBean> getCountryByCode(@PathVariable String code) {
         log.info("Entering {} RestController method", "getCountryByCode()");
 
         try {
@@ -43,7 +45,7 @@ public class CountryController {
     }
 
     @GetMapping(path = "/country/name={name}")
-    public ResponseEntity<Country> getCountryByName(@PathVariable String name){
+    public ResponseEntity<CountryBean> getCountryByName(@PathVariable String name){
         log.info("Entering {} RestController method", "getCountryByName()");
 
         try {
@@ -60,7 +62,7 @@ public class CountryController {
     }
 
     @GetMapping(path = "/country/independent")
-    public ResponseEntity<List<Country>> getAllCountryWithIndepYear(){
+    public ResponseEntity<List<CountryBean>> getAllCountryWithIndepYear(){
         log.info("Entering {} RestController method", "getAllCountryWithIndepYear()");
 
         try {
@@ -75,7 +77,7 @@ public class CountryController {
     }
 
     @GetMapping(path = "/country/independent={year}")
-    public ResponseEntity<List<Country>> getAllCountryWithIndepYear(@PathVariable String year){
+    public ResponseEntity<List<CountryBean>> getAllCountryWithIndepYear(@PathVariable String year){
         log.info("Entering {} RestController method", "getAllCountryWithIndepYear()");
 
         try {
@@ -90,7 +92,7 @@ public class CountryController {
     }
 
     @GetMapping(path = "/country/independentBetween={yearOne}and{yearTwo}")
-    public ResponseEntity<List<Country>> getAllCountryWithIndepYearBetweenXandY(
+    public ResponseEntity<List<CountryBean>> getAllCountryWithIndepYearBetweenXandY(
             @PathVariable(name = "yearOne") String yearOne,
             @PathVariable(name = "yearTwo") String yearTwo
     ){

@@ -1,5 +1,8 @@
-package com.example.restfullapi.countrylanguage;
+package com.example.restfullapi.entity;
 
+import com.example.restfullapi.countrylanguage.CountryLanguageId;
+import com.example.restfullapi.countrylanguage.CountryOfficialLanguage;
+import com.example.restfullapi.countrylanguage.CountryOfficialLanguageConverter;
 import lombok.*;
 
 import javax.persistence.*;

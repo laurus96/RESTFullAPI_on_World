@@ -1,5 +1,7 @@
-package com.example.restfullapi.country;
+package com.example.restfullapi.entity;
 
+import com.example.restfullapi.country.Continent;
+import com.example.restfullapi.country.ContinentConverter;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,9 +10,6 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 @Table(name = "country")
 
 @NamedQuery(name = "Country.findByIndepYearNotNull", query = "SELECT country FROM Country country WHERE country.indepYear IS NOT NULL ")
@@ -35,7 +34,6 @@ public class Country {
 
     @Column(name = "SurfaceArea", columnDefinition = "Decimal(10,2)")
     private BigDecimal surfaceArea;
-
     @Column(name = "IndepYear")
     private Short indepYear;
 
@@ -61,7 +59,7 @@ public class Country {
     private String headOfState;
 
     @Column(name = "Capital")
-    private Integer Capital;
+    private Integer capital;
 
     @Column(name = "Code2", columnDefinition = "char(2)")
     private String code2;

@@ -1,5 +1,6 @@
-package com.example.restfullapi.country;
+package com.example.restfullapi.repository;
 
+import com.example.restfullapi.entity.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.Nullable;
 import java.util.List;
@@ -13,7 +14,6 @@ public interface CountryRepository extends JpaRepository<Country, Character[]> {
     List<Country> findByIndepYearNotNull(); /* Named Query */
     @Nullable
     List<Country> findByIndepYear(Short year); /* Named Query */
-
     @Nullable
     List<Country> findByIndepYearBetweenXandY(Short yearOne, Short yearTwo); /* Named Query */
 

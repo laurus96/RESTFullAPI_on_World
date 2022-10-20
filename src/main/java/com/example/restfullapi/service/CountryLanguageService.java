@@ -1,4 +1,6 @@
-package com.example.restfullapi.countrylanguage;
+package com.example.restfullapi.service;
+
+import com.example.restfullapi.entity.CountryLanguage;
 
 import java.util.List;
 

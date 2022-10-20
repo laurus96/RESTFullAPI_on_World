@@ -1,5 +1,7 @@
-package com.example.restfullapi.countrylanguage;
+package com.example.restfullapi.controller;
 
+import com.example.restfullapi.service.CountryLanguageService;
+import com.example.restfullapi.entity.CountryLanguage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
