@@ -12,5 +12,8 @@ public interface CountryService {
     List<Country> getAllCountries();
     Country getCountryByCode(String code);
     Country getCountryByName(String name);
+    List<Country> getAllCountryWithIndepYearNotNull();
+    List<Country> getAllCountryWithIndepYear(Short year);
+    List<Country> getAllCountryWithIndepYearBetweenXandY(Short yearOne, Short yearTwo);
 
 }

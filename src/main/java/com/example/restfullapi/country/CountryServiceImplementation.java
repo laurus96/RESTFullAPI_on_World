@@ -1,17 +1,13 @@
 package com.example.restfullapi.country;
 
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Objects;
 
-
 @Service
 @Slf4j
-
 public class CountryServiceImplementation implements CountryService{
 
     private final CountryRepository countryRepository;
@@ -25,7 +21,18 @@ public class CountryServiceImplementation implements CountryService{
     public List<Country> getAllCountries() {
         log.info("Fetching all Countries in the Database...");
 
-        return countryRepository.findAll();
+        List<Country> fetchedCountry = countryRepository.findAll();
+        /*
+
+        if (!Objects.isNull(fetchedCountry)){
+            log.info("Founded {} Countries", fetchedCountry.size());
+        }
+
+        */
+
+        log.info("Founded {} Countries", fetchedCountry.size());
+
+        return fetchedCountry;
 
     }
 
@@ -57,5 +64,50 @@ public class CountryServiceImplementation implements CountryService{
 
     }
 
+    @Override
+    public List<Country> getAllCountryWithIndepYearNotNull() {
+        log.info("Fetching Countries in the Database with an independent year not null ...");
 
+        List<Country> fetchedCountry = countryRepository.findByIndepYearNotNull();
+        if(Objects.isNull(fetchedCountry)){
+            log.error("Error in the Database ... ");
+            throw new RuntimeException("Error in the Database ...");
+
+        }
+
+        log.info("Founded {} Countries with an independent date", fetchedCountry.size());
+        return fetchedCountry;
+    }
+
+    @Override
+    public List<Country> getAllCountryWithIndepYear(Short year) {
+        log.info("Fetching Countries in the Database with an independent year > {}  ...", year);
+
+        List<Country> fetchedCountry = countryRepository.findByIndepYear(year);
+        if(Objects.isNull(fetchedCountry)){
+            log.error("Error in the Database ... ");
+            throw new RuntimeException("Error in the Database ...");
+        }
+        log.info("Founded {} Countries with an independent date", fetchedCountry.size());
+
+        return fetchedCountry;
+    }
+
+    @Override
+    public List<Country> getAllCountryWithIndepYearBetweenXandY(Short yearOne, Short yearTwo) {
+        log.info("Fetching Countries in the Database with an independent date between {} and {} ...", yearOne, yearTwo);
+
+        List<Country> fetchedCountry = countryRepository.findByIndepYearBetweenXandY(yearOne, yearTwo);
+        if (Objects.isNull(fetchedCountry)){
+            log.error("Error in the Database ... ");
+            throw new RuntimeException("Error in the Database ...");
+        }
+
+        log.info("Founded {} Countries with an independent date between {} and {}",
+                fetchedCountry.size(),
+                yearOne,
+                yearTwo);
+        
+        return fetchedCountry;
+    }
 }
