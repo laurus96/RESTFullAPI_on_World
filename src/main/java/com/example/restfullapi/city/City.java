@@ -4,7 +4,7 @@ import com.example.restfullapi.country.Country;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Table(name = "city")

@@ -2,7 +2,6 @@ package com.example.restfullapi.country;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.ToString;
 
 @AllArgsConstructor
 @Getter
@@ -15,6 +14,6 @@ public enum Continent {
     ANTARCTICA("Antarctica"),
     SOUTH_AMERICA("South America");
 
-    private String name;
+    private final String name;
 
 }

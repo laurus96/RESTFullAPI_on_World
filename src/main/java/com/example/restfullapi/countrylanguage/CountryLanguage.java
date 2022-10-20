@@ -4,8 +4,6 @@ import com.example.restfullapi.country.Country;
 import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serial;
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity

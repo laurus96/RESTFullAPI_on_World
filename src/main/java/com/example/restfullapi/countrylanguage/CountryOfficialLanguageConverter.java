@@ -12,7 +12,7 @@ public class CountryOfficialLanguageConverter implements AttributeConverter<Coun
 
     @Override
     public CountryOfficialLanguage convertToEntityAttribute(String s) {
-        if(s.compareTo("T") == 0) return CountryOfficialLanguage.FALSE;
+        if(s.compareTo("T") == 0) return CountryOfficialLanguage.TRUE;
         return CountryOfficialLanguage.FALSE;
     }
 }

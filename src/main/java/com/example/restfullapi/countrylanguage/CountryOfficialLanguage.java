@@ -9,6 +9,6 @@ public enum CountryOfficialLanguage {
     TRUE("T"),
     FALSE("F");
 
-    private String value;
+    private final String value;
 
 }

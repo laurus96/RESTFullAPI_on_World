@@ -1,7 +1,5 @@
 package com.example.restfullapi.country;
 
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 

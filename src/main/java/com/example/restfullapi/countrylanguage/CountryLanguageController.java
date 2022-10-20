@@ -1,5 +1,6 @@
 package com.example.restfullapi.countrylanguage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +13,10 @@ import java.util.List;
 @RequestMapping(path = "/api/v1/languages")
 public class CountryLanguageController {
 
-    private final CountryLanguageServiceImplementation countryLanguageService;
+    private final CountryLanguageService countryLanguageService;
 
-    public CountryLanguageController(CountryLanguageServiceImplementation countryLanguageService) {
+    @Autowired
+    public CountryLanguageController(CountryLanguageService countryLanguageService) {
         this.countryLanguageService = countryLanguageService;
     }
 
