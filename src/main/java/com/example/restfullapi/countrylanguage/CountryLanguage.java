@@ -1,6 +1,5 @@
 package com.example.restfullapi.countrylanguage;
 
-import com.example.restfullapi.country.Country;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,13 +16,12 @@ import java.math.BigDecimal;
 public class CountryLanguage {
 
     @Id
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CountryCode", referencedColumnName = "Code")
-    private Country country;
+    @Column(name = "CountryCode")
+    private String countryCode;
 
     @Id
+    @Column(name = "Language")
     private String language;
-
 
     @Column(name = "IsOfficial", columnDefinition = "enum('T', 'F')")
     @Convert(converter = CountryOfficialLanguageConverter.class)

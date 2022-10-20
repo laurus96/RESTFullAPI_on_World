@@ -1,10 +1,10 @@
 package com.example.restfullapi.countrylanguage;
 
-import com.example.restfullapi.country.Country;
 import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+
 
 @Getter
 @Setter
@@ -14,9 +14,9 @@ import java.io.Serializable;
 public class CountryLanguageId implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = -1986120480764358649L;
+    private static final long serialVersionUID = -5927198656564618304L;
 
-    private Country country;
+    private String countryCode;
     private String language;
 
 }

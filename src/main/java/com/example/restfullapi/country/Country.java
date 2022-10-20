@@ -1,6 +1,5 @@
 package com.example.restfullapi.country;
 
-import com.example.restfullapi.city.City;
 import lombok.*;
 
 import javax.persistence.*;
@@ -62,11 +61,5 @@ public class Country {
 
     @Column(name = "Code2", columnDefinition = "char(2)")
     private String code2;
-
-    @ManyToOne
-    private City city;
-
-    @ManyToOne
-    private Country country;
 
 }

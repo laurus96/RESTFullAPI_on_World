@@ -1,8 +1,6 @@
 package com.example.restfullapi.city;
 
-import com.example.restfullapi.country.Country;
 import lombok.*;
-
 import javax.persistence.*;
 
 
@@ -22,9 +20,10 @@ public class City {
     @Column(name = "Name", columnDefinition = "char(35)")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CountryCode", referencedColumnName = "Code")
-    private Country country;
+    //@ManyToOne
+    //@JoinColumn(name = "countryCode", foreignKey = @ForeignKey(name = "city_ibfk_1"))
+    @Column(name = "CountryCode")
+    private String countryCode;
 
     @Column(name = "District", columnDefinition = "char(20)")
     private String district;

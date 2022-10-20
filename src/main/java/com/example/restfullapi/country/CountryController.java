@@ -1,16 +1,15 @@
 package com.example.restfullapi.country;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@RequestMapping(path = "/api/v1/country")
+@RestController
+@RequestMapping(path = "/api/v1")
+
 public class CountryController {
 
     private final CountryService countryService;
@@ -19,10 +18,44 @@ public class CountryController {
         this.countryService = countryService;
     }
 
-    @GetMapping
-    @Transactional(readOnly = true)
-    public @ResponseBody List<Country> getAllCountry(){
-        return countryService.getAllCountry();
+    @GetMapping(path = "/countries")
+    public List<Country> getAllCountries(){
+        return countryService.getAllCountries();
+    }
+
+    @GetMapping(path = "/country/code={code}")
+    public ResponseEntity<Country> getCountryByCode(@PathVariable String code) {
+
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(countryService.getCountryByCode(code));
+
+        } catch (RuntimeException e){
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(null);
+
+        }
+    }
+
+    @GetMapping(path = "/country/name={name}")
+    public ResponseEntity<Country> getCountryByName(@PathVariable String name){
+
+        try {
+
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(countryService.getCountryByName(name));
+
+        }catch (RuntimeException e) {
+
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(null);
+
+        }
+
     }
 
 
