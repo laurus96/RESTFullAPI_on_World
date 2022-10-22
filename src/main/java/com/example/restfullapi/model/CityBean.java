@@ -15,13 +15,18 @@ public class CityBean {
     @JsonProperty("idCity")
     private Integer id;
 
+    @JsonProperty("nameCity")
     private String name;
 
+    @JsonProperty("countryCity")
     private CountryBean country;
 
-    private String code;
+    @JsonProperty("countryCodeCity")
+    private String countryCode;
 
+    @JsonProperty("districtCity")
     private String district;
 
+    @JsonProperty("populationCity")
     private Integer population;
 }

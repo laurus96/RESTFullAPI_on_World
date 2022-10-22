@@ -4,6 +4,7 @@ import com.example.restfullapi.service.CityService;
 import com.example.restfullapi.model.CityBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,11 @@ public class CityController {
     @Autowired
     public CityController(CityService cityService) {
         this.cityService = cityService;
+    }
+
+    @GetMapping(path = "/name={name}")
+    public CityBean getCityByName(@PathVariable(name = "name") String name){
+        return cityService.getCityByName(name);
     }
 
     @GetMapping

@@ -28,6 +28,49 @@ public class CityServiceImplementation implements CityService {
         this.cityRepository = cityRepository;
     }
 
+    private List<CityBean> toListCityBean(List<City> cities){
+        if(!CollectionUtils.isEmpty(cities)) {
+            List<CityBean> citiesBean = new ArrayList<>();
+
+            cities.stream().forEach(city -> {
+                CityBean cityBean = new CityBean();
+                BeanUtils.copyProperties(city, cityBean);
+                if (!Objects.isNull(city.getCountry())) {
+                    CountryBean countryBean = new CountryBean();
+                    BeanUtils.copyProperties(city.getCountry(), countryBean);
+                    cityBean.setCountry(countryBean);
+                }
+                citiesBean.add(cityBean);
+            });
+            return citiesBean;
+        }
+        return null;
+    }
+
+    private CityBean toCityBean(City city){
+        if(!Objects.isNull(city)){
+            CityBean cityBean = new CityBean();
+            BeanUtils.copyProperties(city, cityBean);
+            if(!Objects.isNull(city.getCountry())){
+                CountryBean countryBean = new CountryBean();
+                BeanUtils.copyProperties(city.getCountry(), countryBean);
+                cityBean.setCountry(countryBean);
+            }
+            return cityBean;
+        }
+        return null;
+    }
+
+    @Override
+    public CityBean getCityByName(String name) {
+        log.info("Fetching city, name = {} ...", name);
+        City city = cityRepository.findByName(name);
+        if(!Objects.isNull(city)){
+            return toCityBean(city);
+        }
+        return null;
+    }
+
     @Override
     public List<CityBean> getCityAll() {
         log.info("Fetching cities ...");
@@ -35,28 +78,12 @@ public class CityServiceImplementation implements CityService {
         List<City> cities = cityRepository.findAll();
 
         if(!CollectionUtils.isEmpty(cities)){
-            List<CityBean> citiesBean = new ArrayList<>();
-
             try {
-                cities.stream().forEach(city -> {
-                    CityBean c = new CityBean();
-                    BeanUtils.copyProperties(city, c);
-                    if (!Objects.isNull(city.getCountry())) {
-                        CountryBean countryBean = new CountryBean();
-                        BeanUtils.copyProperties(city.getCountry(), countryBean);
-                        c.setCountry(countryBean);
-                    }
-                    citiesBean.add(c);
-                });
-
-                return citiesBean;
-
+                return toListCityBean(cities);
             }catch (RuntimeException e){
                 log.error(e.getMessage());
             }
-
         }
-
         return null;
     }
 }
