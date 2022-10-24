@@ -6,8 +6,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "city")
+
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class City {
 
     @Id

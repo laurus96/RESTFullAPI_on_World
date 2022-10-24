@@ -54,6 +54,12 @@ public class CountryLanguageServiceImplementation implements CountryLanguageServ
             CountryLanguageBean countryLanguageBean = new CountryLanguageBean();
 
             BeanUtils.copyProperties(countryLanguage, countryLanguageBean);
+            if(!Objects.isNull(countryLanguage.getCountry())){
+                CountryBean countryBean = new CountryBean();
+                BeanUtils.copyProperties(countryLanguage.getCountry(), countryBean);
+                countryLanguageBean.setCountryBean(countryBean);
+            }
+
             return countryLanguageBean;
         }
 
@@ -71,9 +77,7 @@ public class CountryLanguageServiceImplementation implements CountryLanguageServ
             log.error(e.getMessage());
             return null;
         }
-
     }
-
 
     @Override
     public List<CountryLanguageBean> getCountryLanguagesByName(String countryName){
@@ -96,11 +100,10 @@ public class CountryLanguageServiceImplementation implements CountryLanguageServ
 
             return toCountryLanguageBean(countryLanguageRepository.findOfficialLanguage(countryName));
 
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             log.error(e.getMessage());
             return null;
         }
-
     }
 
     @Override
@@ -114,7 +117,6 @@ public class CountryLanguageServiceImplementation implements CountryLanguageServ
             log.error(e.getMessage());
             return null;
         }
-
     }
 
 }

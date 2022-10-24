@@ -7,11 +7,14 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
+
 @Getter
 @Setter
-@Table(name = "country")
+@AllArgsConstructor
+@NoArgsConstructor
 
+@Entity
+@Table(name = "country")
 @NamedQuery(name = "Country.findByIndepYearNotNull", query =
         "SELECT country " +
                 "FROM Country country " +

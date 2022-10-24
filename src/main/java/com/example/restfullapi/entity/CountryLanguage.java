@@ -7,14 +7,15 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "countrylanguage")
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@IdClass(CountryLanguageId.class)
 
+@Entity
+@Table(name = "countrylanguage")
+@IdClass(CountryLanguageId.class)
 @NamedQuery(name = "CountryLanguage.findSpokenLanguage", query =
         "SELECT countrylanguage " +
                 "FROM CountryLanguage countrylanguage " +
