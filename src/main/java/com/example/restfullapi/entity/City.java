@@ -3,14 +3,18 @@ package com.example.restfullapi.entity;
 import lombok.*;
 import javax.persistence.*;
 
-
-@Entity
-@Table(name = "city")
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
+@Entity
+@Table(name = "city")
+@NamedQuery(name = "City.getAllCountryCity", query=
+        "SELECT city " +
+                "FROM City city INNER JOIN Country country ON city.code = country.code " +
+                "WHERE country.name = ?1")
+
 public class City {
 
     @Id

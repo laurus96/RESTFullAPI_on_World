@@ -31,4 +31,9 @@ public class CityController {
         return cityService.getCityAll();
     }
 
+    @GetMapping(path = "/countryName={countryName}")
+    public List<CityBean> getAllCityByCountryName(@PathVariable String countryName){
+        return cityService.getAllCityByCountryName(countryName);
+    }
+
 }

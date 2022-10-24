@@ -86,4 +86,17 @@ public class CityServiceImplementation implements CityService {
         }
         return null;
     }
+
+    @Override
+    public List<CityBean> getAllCityByCountryName(String countryName) {
+        log.info("Fetching cities in {}", countryName);
+        try {
+
+            return toListCityBean(cityRepository.getAllCountryCity(countryName));
+
+        }catch (RuntimeException e){
+            log.info(e.getMessage());
+        }
+        return null;
+    }
 }

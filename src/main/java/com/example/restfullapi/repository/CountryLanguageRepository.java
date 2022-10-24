@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface CountryLanguageRepository extends JpaRepository<CountryLanguage, String> {
     @Nullable
-    List<CountryLanguage> findSpokenLanguage(String countryName); /* Named Query */
+    List<CountryLanguage> findSpokenLanguage(String countryName);
     @Nullable
-    CountryLanguage findOfficialLanguage(String countryName); /* Named Query */
+    CountryLanguage findOfficialLanguage(String countryName);
     @Nullable
-    List<CountryLanguage> findNonOfficialLanguage(String countryName); /* Named Query */
+    List<CountryLanguage> findNonOfficialLanguage(String countryName);
 }
