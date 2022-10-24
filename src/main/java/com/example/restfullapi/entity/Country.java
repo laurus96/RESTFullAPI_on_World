@@ -1,7 +1,7 @@
 package com.example.restfullapi.entity;
 
-import com.example.restfullapi.country.Continent;
-import com.example.restfullapi.country.ContinentConverter;
+import com.example.restfullapi.enumeration.Continent;
+import com.example.restfullapi.converter.ContinentConverter;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,9 +12,20 @@ import java.math.BigDecimal;
 @Setter
 @Table(name = "country")
 
-@NamedQuery(name = "Country.findByIndepYearNotNull", query = "SELECT country FROM Country country WHERE country.indepYear IS NOT NULL ")
-@NamedQuery(name = "Country.findByIndepYear", query = "SELECT country FROM Country country WHERE country.indepYear > ?1 ")
-@NamedQuery(name =  "Country.findByIndepYearBetweenXandY", query = "SELECt country FROM Country country WHERE country.indepYear BETWEEN ?1 AND ?2")
+@NamedQuery(name = "Country.findByIndepYearNotNull", query =
+        "SELECT country " +
+                "FROM Country country " +
+                "WHERE country.indepYear IS NOT NULL ")
+
+@NamedQuery(name = "Country.findByIndepYear", query =
+        "SELECT country " +
+                "FROM Country country " +
+                "WHERE country.indepYear > ?1 ")
+
+@NamedQuery(name =  "Country.findByIndepYearBetweenXandY", query =
+        "SELECT country " +
+                "FROM Country country " +
+                "WHERE country.indepYear BETWEEN ?1 AND ?2")
 
 public class Country {
 

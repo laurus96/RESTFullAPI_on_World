@@ -17,4 +17,5 @@ public interface CountryRepository extends JpaRepository<Country, Character[]> {
     @Nullable
     List<Country> findByIndepYearBetweenXandY(Short yearOne, Short yearTwo); /* Named Query */
 
+
 }

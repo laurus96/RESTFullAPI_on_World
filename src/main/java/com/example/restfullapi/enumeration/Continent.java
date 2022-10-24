@@ -1,4 +1,4 @@
-package com.example.restfullapi.country;
+package com.example.restfullapi.enumeration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

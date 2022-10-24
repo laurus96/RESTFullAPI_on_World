@@ -1,4 +1,6 @@
-package com.example.restfullapi.country;
+package com.example.restfullapi.converter;
+
+import com.example.restfullapi.enumeration.Continent;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

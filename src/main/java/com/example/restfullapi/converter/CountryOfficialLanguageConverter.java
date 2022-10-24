@@ -1,4 +1,6 @@
-package com.example.restfullapi.countrylanguage;
+package com.example.restfullapi.converter;
+
+import com.example.restfullapi.enumeration.CountryOfficialLanguage;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

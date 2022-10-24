@@ -32,7 +32,7 @@ public class CityServiceImplementation implements CityService {
         if(!CollectionUtils.isEmpty(cities)) {
             List<CityBean> citiesBean = new ArrayList<>();
 
-            cities.stream().forEach(city -> {
+            cities.forEach(city -> {
                 CityBean cityBean = new CityBean();
                 BeanUtils.copyProperties(city, cityBean);
                 if (!Objects.isNull(city.getCountry())) {
