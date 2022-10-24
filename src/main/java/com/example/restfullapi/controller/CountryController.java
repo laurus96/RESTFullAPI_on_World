@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(path = "/api/v1")
@@ -23,13 +24,11 @@ public class CountryController {
 
     @GetMapping(path = "/countries")
     public List<CountryBean> getAllCountries(){
-        log.info("Entering {} RestController method", "getAllCountries()");
         return countryService.getAllCountries();
     }
 
     @GetMapping(path = "/country/code={code}")
     public ResponseEntity<CountryBean> getCountryByCode(@PathVariable String code) {
-        log.info("Entering {} RestController method", "getCountryByCode()");
 
         try {
             return ResponseEntity
@@ -40,13 +39,11 @@ public class CountryController {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(null);
-
         }
     }
 
     @GetMapping(path = "/country/name={name}")
     public ResponseEntity<CountryBean> getCountryByName(@PathVariable String name){
-        log.info("Entering {} RestController method", "getCountryByName()");
 
         try {
             return ResponseEntity
@@ -57,13 +54,11 @@ public class CountryController {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(null);
-
         }
     }
 
     @GetMapping(path = "/country/independent")
     public ResponseEntity<List<CountryBean>> getAllCountryWithIndepYear(){
-        log.info("Entering {} RestController method", "getAllCountryWithIndepYear()");
 
         try {
             return ResponseEntity
@@ -78,7 +73,6 @@ public class CountryController {
 
     @GetMapping(path = "/country/independent={year}")
     public ResponseEntity<List<CountryBean>> getAllCountryWithIndepYear(@PathVariable String year){
-        log.info("Entering {} RestController method", "getAllCountryWithIndepYear()");
 
         try {
             return ResponseEntity
@@ -96,7 +90,6 @@ public class CountryController {
             @PathVariable(name = "yearOne") String yearOne,
             @PathVariable(name = "yearTwo") String yearTwo
     ){
-        log.info("Entering {} RestController method", "getAllCountryWithIndepYearBetweenXandY()");
 
         try {
             return ResponseEntity
@@ -107,6 +100,21 @@ public class CountryController {
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(null);
         }
+    }
+
+    @RequestMapping(path = "/country/inDB/countryName={countryName}", method = RequestMethod.HEAD)
+    public ResponseEntity isCountryInDatabase(@PathVariable String countryName) {
+
+        try {
+            if (!Objects.isNull(countryService.getCountryByName(countryName))) {
+                return ResponseEntity.status(HttpStatus.OK).build();
+            }
+        } catch (RuntimeException e) {
+            log.error(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+        return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
 
