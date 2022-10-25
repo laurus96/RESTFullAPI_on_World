@@ -5,6 +5,8 @@ import com.example.restfullapi.converter.ContinentConverter;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 
@@ -30,7 +32,10 @@ import java.math.BigDecimal;
                 "FROM Country country " +
                 "WHERE country.indepYear BETWEEN ?1 AND ?2")
 
-public class Country {
+public class Country implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -9049683190111994959L;
 
     @Id
     @Column(name = "Code", columnDefinition = "char(3)")

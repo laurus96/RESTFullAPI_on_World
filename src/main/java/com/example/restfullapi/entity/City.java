@@ -2,6 +2,8 @@ package com.example.restfullapi.entity;
 
 import lombok.*;
 import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -15,7 +17,10 @@ import javax.persistence.*;
                 "FROM City city INNER JOIN Country country ON city.code = country.code " +
                 "WHERE country.name = ?1")
 
-public class City {
+public class City implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 6016031709248020501L;
 
     @Id
     @Column(name = "ID")

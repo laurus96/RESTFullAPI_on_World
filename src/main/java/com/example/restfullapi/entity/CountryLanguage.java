@@ -5,6 +5,8 @@ import com.example.restfullapi.converter.CountryOfficialLanguageConverter;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 
@@ -36,8 +38,10 @@ import java.math.BigDecimal;
 
 
 
-public class CountryLanguage {
+public class CountryLanguage implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 8110207317223583914L;
     @Id
     @Column(name = "CountryCode", insertable = false, updatable = false)
     private String countryCode;
