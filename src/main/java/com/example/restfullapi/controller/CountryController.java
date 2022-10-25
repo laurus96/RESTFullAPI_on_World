@@ -102,7 +102,7 @@ public class CountryController {
         }
     }
 
-    @RequestMapping(path = "/country/inDB/countryName={countryName}", method = RequestMethod.HEAD)
+    @RequestMapping(path = "/country/countryName={countryName}", method = RequestMethod.HEAD)
     public ResponseEntity<Void> isCountryInDatabase(@PathVariable String countryName) {
 
         try {
