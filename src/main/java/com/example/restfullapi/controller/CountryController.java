@@ -36,6 +36,7 @@ public class CountryController {
                     .body(countryService.getCountryByCode(code));
 
         } catch (RuntimeException e){
+            log.error(e.getMessage());
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(null);
@@ -51,6 +52,7 @@ public class CountryController {
                     .body(countryService.getCountryByName(name));
 
         }catch (RuntimeException e) {
+            log.error(e.getMessage());
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(null);
@@ -65,6 +67,7 @@ public class CountryController {
                     .status(HttpStatus.OK)
                     .body(countryService.getAllCountryWithIndepYearNotNull());
         } catch (RuntimeException e){
+            log.error(e.getMessage());
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(null);
@@ -79,6 +82,7 @@ public class CountryController {
                     .status(HttpStatus.OK)
                     .body(countryService.getAllCountryWithIndepYear(Short.decode(year)));
         } catch (RuntimeException e){
+            log.error(e.getMessage());
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(null);
@@ -96,6 +100,7 @@ public class CountryController {
                     .status(HttpStatus.OK)
                     .body(countryService.getAllCountryWithIndepYearBetweenXandY(Short.decode(yearOne), Short.decode(yearTwo)));
         } catch (RuntimeException e){
+            log.error(e.getMessage());
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(null);
